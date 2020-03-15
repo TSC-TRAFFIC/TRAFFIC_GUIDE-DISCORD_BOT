@@ -1,0 +1,291 @@
+import discord, asyncio, datetime, time
+from discord.ext import commands
+from discord.ext.commands import Bot
+
+client = commands.Bot(command_prefix = '!교통 ')
+client.remove_command("help")
+token = '토큰 값'
+
+@client.event
+async def on_ready():
+    print("Bot is Ready.")
+    print(client.user.id)
+    print("===============")
+    game = discord.Game("'!교통 도움말'")
+    await client.change_presence(status=discord.Status.online, activity=game)
+
+@client.command(pass_context=True)
+async def 도움말(ctx):
+    embed = discord.Embed(
+            title=":vertical_traffic_light: **'TRAFFIC GUIDE'** 도움말",
+            description="> !교통 소개\n```TRAFFIC GUIDE BOT을 소개합니다.```\n> !교통 교통\n```교통의 사전적 의미를 알려줍니다.```\n> !교통 영어로\n```교통을 영어로 알려줍니다.```\n> !교통 안녕\n```같이 인사를 해줍니다.```\n> !교통 철도_OO선\n```OO선에 대해 알려줍니다.```\n> !교통 도움말_철도\n```어떤 철도 노선이 있는지 알려줍니다.```\n> !교통 항공사_OO항공\n```00항공에 대해 알려줍니다.```\n> !교통 도움말_항공사\n```어떤 항공사가 있는지 알려줍니다.```\n> !교통 초대코드\n```'TRAFFIC GUIDE' 봇의 초대코드를 알려줍니다.```\n> !교통 유튜브\n```개발자가 운영하는 교통 유튜브 채널 주소입니다.```",
+            color=0xb8cdf9
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 도움말_철도(ctx):
+    embed = discord.Embed(
+            title=":train2: **'TRAFFIC GUIDE'** 도움말 - 철도",
+            description="> !교통 철도_경부고속선\n\n> !교통 철도_호남고속선\n\n> !교통 철도_수서평택고속선\n\n> !교통 철도_경인선\n\n> !교통 철도_경부선\n\n> !교통 철도_호남선\n\n> !교통 철도_충북선\n\n> !교통 철도_경전선\n\n> !교통 철도_장항선\n\n> !교통 철도_전라선\n\n> !교통 철도_경춘선\n\n> !교통 철도_중앙선\n\n> !교통 철도_영동선\n\n> !교통 철도_경북선\n\n> !교통 철도_안산선\n\n> !교통 철도_과천선\n\n> !교통 철도_일산선\n",
+            color=0xb8cdf9
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 도움말_항공사(ctx):
+    embed = discord.Embed(
+            title=":airplane: **'TRAFFIC GUIDE'** 도움말 - 항공사",
+            description="> !교통 항공사_대한항공\n\n> !교통 항공사_아시아나항공\n\n> !교통 항공사_제주항공\n",
+            color=0xb8cdf9
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 소개(ctx):
+    embed = discord.Embed(
+            title=":vertical_traffic_light: 저는..",
+            description="교통 정보를 알려주는 `TRAFFIC GUIDE` 에요!",
+            color=0xd3ffce
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 초대코드(ctx):
+    embed = discord.Embed(
+            title="**`TRAFFIC GUIDE` 봇 초대코드**",
+            description=":arrow_forward: [봇 초대하기](https://discordapp.com/api/oauth2/authorize?client_id=687505365973073950&permissions=0&scope=bot)",
+            color=0xd3ffce
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 교통(ctx):
+    embed = discord.Embed(
+            title=":airplane: 교통의 뜻은?",
+            description="자동차ㆍ기차ㆍ배ㆍ비행기 따위를 이용하여 사람이 오고 가거나, 짐을 실어 나르는 일.",
+            color=0xb8cdf9
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 유튜브(ctx):
+    embed = discord.Embed(
+            title=":arrow_forward: 개발자가 운영중인 유튜브 채널",
+            description="[여기](https://www.youtube.com/c/[TSC]교통종합채널KoreaTraffic)를 클릭해서 들어가보세요!",
+            color=0xcfe1ff
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 영어로(ctx):
+    embed = discord.Embed(
+            title=":flag_us: 교통을 영어로 하면?",
+            description="Traffic | 트래픽",
+            color=0xb8cdf9
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 안녕(ctx):
+    embed = discord.Embed(
+            title="안녕하세요 ~",
+            description="만나서 반갑습니다 ! :grin:",
+            color=0xd3ffce
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_경부고속선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경부고속선",
+            description="```서울의 금천구청역과 부산광역시의 부산역을 잇는 고속철도 노선.```\n기점 : 금천구청역\n종점 : 부산역\n노선 길이 : 398.2km\n노선 번호 : 101\n역 수 : 09개\n개업일 : 1차 개통 - 2004년 04월 01일 | 2차 개통 - 2010년 11월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_호남고속선(ctx):
+    embed = discord.Embed(
+            title=":train2: 호남고속선",
+            description="```충북의 오송역과 광주광역시의 광주송정역을 잇는 고속철도 노선.```\n기점 : 오송역\n종점 : 광주송정역\n노선 길이 : 183.8km\n노선 번호 : 102\n역 수 : 05개\n개업일 : 2015년 04월 02일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_수서평택고속선(ctx):
+    embed = discord.Embed(
+            title=":train2: 수서평택고속선",
+            description="```서울의 수서역과 경부고속선 접속부를 잇는 고속철도 노선.```\n기점 : 수서역\n종점 : 경부고속선 접속부\n노선 길이 : 61.1km\n노선 번호 : 103\n역 수 : 03개\n개업일 : 2016년 12월 09일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_경인선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경인선",
+            description="```서울의 구로역과 인천광역시의 인천역을 잇는 철도 노선.```\n기점 : 구로역\n종점 : 인천역\n노선 길이 : 27km\n노선 번호 : 301\n역 수 : 21개\n개업일 : 1899년 09월 18일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_경부선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경부선",
+            description="```서울의 서울역과 부산광역시의 부산역을 잇는 철도 노선.```\n기점 : 서울역\n종점 : 부산역\n노선 길이 : 441.7km\n노선 번호 : 302\n역 수 : 90개\n개업일 : 1905년 01월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_호남선(ctx):
+    embed = discord.Embed(
+            title=":train2: 호남선",
+            description="```대전광역시의 대전조차장역과 전남 목포시의 목포역을 잇는 철도 노선.```\n기점 : 대전조차장역\n종점 : 목포역\n노선 길이 : 252.5km\n노선 번호 : 304\n역 수 : 48개\n개업일 : 1914년 01월 11일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)@client.command(pass_context=True)
+
+@client.command(pass_context=True)
+async def 철도_충북선(ctx):
+    embed = discord.Embed(
+            title=":train2: 충북선",
+            description="```세종특별자치시의 조치원역과 충북의 봉양역을 잇는 철도 노선.```\n기점 : 조치원역\n종점 : 봉양역\n노선 길이 : 115km\n노선 번호 : 306\n역 수 : 19개\n개업일 : 1921년 11월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)@client.command(pass_context=True)
+
+@client.command(pass_context=True)
+async def 철도_경전선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경전선",
+            description="```경남의 삼랑진역과 광주광역시의 광주송정역을 잇는 철도 노선.```\n기점 : 삼랑진역\n종점 : 광주송정역\n노선 길이 : 277.7km\n노선 번호 : 307\n역 수 : 31개\n개업일 : 1905년 05월 26일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_장항선(ctx):
+    embed = discord.Embed(
+            title=":train2: 장항선",
+            description="```충남의 천안역과 전북의 익산역을 잇는 철도 노선.```\n기점 : 천안역\n종점 : 익산역\n노선 길이 : 154.4km\n노선 번호 : 308\n역 수 : 29개\n개업일 : 1922년 06월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_전라선(ctx):
+    embed = discord.Embed(
+            title=":train2: 전라선",
+            description="```전북의 익산역과 전남 여수엑스포역을 잇는 철도 노선.```\n기점 : 익산역\n종점 : 여스엑스포역\n노선 길이 : 180.4km\n노선 번호 : 309\n역 수 : 31개\n개업일 : 1914년 10월 17일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_경춘선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경춘선",
+            description="```서울의 망우역과 강원의 춘천역 잇는 철도 노선.```\n기점 : 망우역\n종점 : 춘천역\n노선 길이 : 80.7km\n노선 번호 : 310\n역 수 : 20개\n개업일 : 1939년 07월 25일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+
+@client.command(pass_context=True)
+async def 철도_중앙선(ctx):
+    embed = discord.Embed(
+            title=":train2: 중앙선",
+            description="```서울의 청량리역과 경북 경주역을 잇는 철도 노선.```\n기점 : 청량리역\n종점 : 경주역\n노선 길이 : 384km\n노선 번호 : 312\n역 수 : 78개\n개업일 : 1939년 04월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_영동선(ctx):
+    embed = discord.Embed(
+            title=":train2: 영동선",
+            description="```경북의 영주역과 강원의 청량신호소를 잇는 철도 노선.```\n기점 : 영주역\n종점 : 청량신호소\n노선 길이 : 188.9km\n노선 번호 : 313\n역 수 : 37개\n개업일 : 1940년 08월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_경북선(ctx):
+    embed = discord.Embed(
+            title=":train2: 경북선",
+            description="```경북의 김천역과 경북의 영주역을 잇는 철도 노선.```\n기점 : 김천역\n종점 : 영주역\n노선 길이 : 115km\n노선 번호 : 314\n역 수 : 12개\n개업일 : 1924년 10월 01일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_안산선(ctx):
+    embed = discord.Embed(
+            title=":train2: 안산선",
+            description="```경기도의 금정역과 경기도의 오이도역을 잇는 철도 노선.```\n기점 : 금정역\n종점 : 오이도역\n노선 길이 : 26km\n노선 번호 : 316\n역 수 : 14개\n개업일 : 1988년 10월 25일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+
+@client.command(pass_context=True)
+async def 철도_과천선(ctx):
+    embed = discord.Embed(
+            title=":train2: 과천선",
+            description="```경기도의 금정역과 서울의 남태령역을 잇는 철도 노선.```\n기점 : 금정역\n종점 : 남태령역\n노선 길이 : 14.4km\n노선 번호 : 317\n역 수 : 10개\n개업일 : 1993년 01월 15일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 철도_일산선(ctx):
+    embed = discord.Embed(
+            title=":train2: 일산선",
+            description="```경기도의 지축역과 경기도의 대화역을 잇는 철도 노선.```\n기점 : 지축역\n종점 : 대화역\n노선 길이 : 19.2km\n노선 번호 : 319\n역 수 : 11개\n개업일 : 1996년 01월 30일",
+            color=0x0065B3
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 항공사_대한항공(ctx):
+    embed = discord.Embed(
+            title=":airplane: 대한항공",
+            description="정식 명칭 : 주식회사 대한항공\n허브 공항 : 인천국제공항 제2 여객터미널\n설립일 : 1969년 03월 01일\n항공 동맹 : 스카이팀\n취항지 수 : 44개국 | 125개 도시\n보유 항공기 수 : 181\n슬로건 : Excellence In Flight\n\n:arrow_forward: [대한항공 홈페이지](https://www.koreanair.com/)",
+            color=0x87CEEB
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 항공사_아시아나항공(ctx):
+    embed = discord.Embed(
+            title=":airplane: 아시아나항공",
+            description="정식 명칭 : 아시아나항공 주식회사\n허브 공항 : 인천국제공항 제1 여객터미널\n설립일 : 1988년 02월 17일\n항공 동맹 : 스타얼라이언스\n취항지 수 : 29개국 | 90개 도시\n보유 항공기 수 : 84\n슬로건 : 세계로 나가는 아름다운 동행\n\n:arrow_forward: [아시아나항공 홈페이지](https://flyasiana.com/)",
+            color=0x87CEEB
+
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 항공사_제주항공(ctx):
+    embed = discord.Embed(
+            title=":airplane: 제주항공",
+            description="정식 명칭 : 주식회사 제주항공\n허브 공항 : 인천국제공항 제1 여객터미널\n설립일 : 2005년 01월 25일\n항공 동맹 : 밸류 얼라이언스\n보유 항공기 수 : 45\n슬로건 : Nes Standard, Jejuair\n\n:arrow_forward: [제주항공 홈페이지](www.jejuair.net)",
+            color=0x87CEEB
+
+        )
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def 핑(ctx):
+    embed = discord.Embed(
+            title=":ping_pong: 현재 핑 (단위 : ms)",
+            description="현재 핑 : **" + str(int(client.latency * 1000)) + "ms**",
+            color=0xd3ffce
+        )
+    await ctx.send(embed=embed)
+
+client.run(token)
