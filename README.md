@@ -8,3 +8,4 @@
 'TRAFFIC GUIDE' - DISCORD BOT
 
 The 'TRAFFIC GUIDE' bot is a Discord robot that provides information about traffic.
+<br><br><br>[Inviting a Bot](https://discordapp.com/oauth2/authorize?client_id=687505365973073950&permissions=0&scope=bot)
